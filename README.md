@@ -2,4 +2,4 @@
 
 Here's how:
 
-    prettydata.prettify(some_dict, indent=4)
+    print ''.join(prettydata.prettify(ipn_dict, indent=2))
