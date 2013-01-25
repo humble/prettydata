@@ -1,3 +1,8 @@
+"""
+This file contains functions for formatting output and such.
+"""
+
+
 def pretty_dict(d, indent=0, nest_level=1):
   '''List-format string output to display a dict in a readable format.'''
   if not d:
@@ -82,3 +87,26 @@ def list_pretty_iterator(pretty_iter):
 
 def prettify(data, indent=4, nest_level=0):
   return list_pretty_iterator(_pretty_merge_value(data, indent=indent, nest_level=nest_level))
+
+
+HEADER = '\033[95m'
+BLUE = '\033[94m'
+GREEN = '\033[92m'
+WARNING = '\033[93m'
+RED = '\033[91m'
+ENDC = '\033[0m'
+
+COLOR_ALIASES = {
+  'header': HEADER,
+  'blue': BLUE,
+  'green': GREEN,
+  'warning': WARNING,
+  'red': RED,
+}
+
+
+def term_color(text, color):
+  color_code = COLOR_ALIASES.get(color)
+  if color_code:
+    return color_code + text + ENDC
+  return text
